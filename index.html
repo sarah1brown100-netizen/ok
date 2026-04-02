@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+/* Full page background */
+body, html {
+margin: 0;
+padding: 0;
+height: 100%;
+font-family: Arial, sans-serif;
+background: linear-gradient(to bottom, #cce7ff, #99d0ff); /* light blue gradient */
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+/* Login container */
+.login-container {
+background: rgba(255, 255, 255, 0.95);
+padding: 40px;
+border-radius: 12px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+width: 360px;
+text-align: center;
+}
+
+/* Logo */
+#logo {
+width: 120px;
+margin-bottom: 20px;
+}
+
+/* Input fields */
+input[type="text"], input[type="password"] {
+width: 100%;
+padding: 12px;
+margin: 8px 0 20px 0;
+border: 1px solid #ccc;
+border-radius: 6px;
+font-size: 16px;
+}
+
+/* Login button */
+button {
+width: 100%;
+padding: 12px;
+background-color: #0070c9;
+color: white;
+border: none;
+border-radius: 6px;
+font-size: 16px;
+cursor: pointer;
+margin-bottom: 10px;
+}
+
+button:hover {
+background-color: #005ea3;
+}
+
+/* Links */
+.login-container a {
+display: block;
+margin: 8px 0;
+color: #0070c9;
+text-decoration: none;
+font-size: 14px;
+}
+
+.login-container a:hover {
+text-decoration: underline;
+}
+
+/* Remember me and token checkboxes */
+.checkbox-container {
+display: flex;
+justify-content: space-between;
+margin-bottom: 20px;
+font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<div class="login-container">
+<img src="https://1000logos.net/wp-content/uploads/2017/05/Chase-Logo-2007.png" id="logo" alt="Chase Logo">
+
+<form>
+<input type="text" placeholder="Username" id="username" required>
+<input type="password" placeholder="Password" id="password" required>
+
+<div class="checkbox-container">
+<label><input type="checkbox" id="rememberMe"> Remember me</label>
+<label><input type="checkbox" id="useToken"> Use token</label>
+</div>
+
+<button type="submit">Sign in</button>
+
+<a href="#">Forgot username/password?</a>
+<a href="#">Not enrolled? Sign up now.</a>
+</form>
+</div>
+
+</body>
+</html>
