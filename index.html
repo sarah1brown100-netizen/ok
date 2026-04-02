@@ -3,105 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Page</title>
+<title>Sign in</title>
+
 <style>
-/* Full page background */
-body, html {
-margin: 0;
-padding: 0;
-height: 100%;
+* {
+box-sizing: border-box;
 font-family: Arial, sans-serif;
-background: linear-gradient(to bottom, #cce7ff, #99d0ff); /* light blue gradient */
+}
+
+body {
+margin: 0;
+height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
+background: linear-gradient(to bottom, #e6f0fa, #cfe2f3);
 }
 
-/* Login container */
 .login-container {
-background: rgba(255, 255, 255, 0.95);
-padding: 40px;
-border-radius: 12px;
-box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 width: 360px;
-text-align: center;
+background: #ffffff;
+padding: 35px;
+border-radius: 12px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 /* Logo */
-#logo {
-width: 120px;
-margin-bottom: 20px;
+.logo {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 25px;
 }
 
-/* Input fields */
-input[type="text"], input[type="password"] {
+.logo span {
+font-size: 32px;
+font-weight: 700;
+color: #117aca;
+letter-spacing: 1px;
+}
+
+/* Inputs */
+input {
 width: 100%;
 padding: 12px;
-margin: 8px 0 20px 0;
+margin: 10px 0 15px 0;
 border: 1px solid #ccc;
 border-radius: 6px;
-font-size: 16px;
+font-size: 14px;
 }
 
-/* Login button */
+/* Options row */
+.options {
+display: flex;
+justify-content: space-between;
+font-size: 13px;
+margin-bottom: 15px;
+}
+
+/* Button */
 button {
 width: 100%;
 padding: 12px;
-background-color: #0070c9;
+background: #117aca;
 color: white;
 border: none;
 border-radius: 6px;
-font-size: 16px;
+font-weight: bold;
 cursor: pointer;
-margin-bottom: 10px;
 }
 
 button:hover {
-background-color: #005ea3;
+background: #0d5f9c;
 }
 
 /* Links */
-.login-container a {
-display: block;
-margin: 8px 0;
-color: #0070c9;
-text-decoration: none;
-font-size: 14px;
+.links {
+text-align: center;
+margin-top: 12px;
+font-size: 13px;
 }
 
-.login-container a:hover {
+.links a {
+color: #117aca;
+text-decoration: none;
+}
+
+.links a:hover {
 text-decoration: underline;
 }
 
-/* Remember me and token checkboxes */
-.checkbox-container {
-display: flex;
-justify-content: space-between;
-margin-bottom: 20px;
-font-size: 14px;
+.step {
+display: none;
+}
+
+.step.active {
+display: block;
 }
 </style>
 </head>
+
 <body>
 
 <div class="login-container">
-<img src="https://1000logos.net/wp-content/uploads/2017/05/Chase-Logo-2007.png" id="logo" alt="Chase Logo">
 
-<form>
-<input type="text" placeholder="Username" id="username" required>
-<input type="password" placeholder="Password" id="password" required>
-
-<div class="checkbox-container">
-<label><input type="checkbox" id="rememberMe"> Remember me</label>
-<label><input type="checkbox" id="useToken"> Use token</label>
+<!-- Logo -->
+<div class="logo">
+<span>CHASE</span>
+<svg width="28" height="28" viewBox="0 0 100 100" style="margin-left:8px;">
+<polygon points="35,0 65,0 100,35 100,65 65,100 35,100 0,65 0,35" fill="#117aca"/>
+<polygon points="45,20 55,20 80,45 80,55 55,80 45,80 20,55 20,45" fill="white"/>
+</svg>
 </div>
 
-<button type="submit">Sign in</button>
+<!-- STEP 1 -->
+<div class="step active" id="step1">
+<input type="text" id="username" placeholder="Username">
 
+<div class="options">
+<label><input type="checkbox"> Remember me</label>
+</div>
+
+<button onclick="nextStep()">Next</button>
+
+<div class="links">
 <a href="#">Forgot username/password?</a>
-<a href="#">Not enrolled? Sign up now.</a>
-</form>
 </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step" id="step2">
+<input type="password" placeholder="Password">
+
+<div class="options">
+<label><input type="checkbox"> Remember me</label>
+</div>
+
+<button onclick="submitForm()">Sign in</button>
+
+<div class="links">
+<a href="#">Forgot password?</a>
+</div>
+</div>
+
+</div>
+
+<script>
+function nextStep(){
+document.getElementById("step1").classList.remove("active");
+document.getElementById("step2").classList.add("active");
+}
+
+function submitForm(){
+alert("Signed in (demo)");
+}
+</script>
 
 </body>
 </html>
